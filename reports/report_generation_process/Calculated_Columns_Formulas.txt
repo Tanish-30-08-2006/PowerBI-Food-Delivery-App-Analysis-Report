@@ -52,3 +52,25 @@ write down the city names generate a code
 ---------------------------------------------------------------------
 
 
+
+2. CostForTwo Column --> Restaurant Table
+
+------------Code--------------
+
+Cost Bucket = 
+
+IF(
+    [CostForTwo] < 500, 
+    "Budget", 
+
+    IF(
+        [CostForTwo] < 1000, 
+        "Mid Range", 
+        
+        "Premium"
+    )
+)
+
+------------------------------
+
+3. 
