@@ -1,0 +1,54 @@
+
+Calculated-Columns --------------------------
+
+we can clean data and add new columns changing the data itself and remove messy columns but when we have lets say 20000 rows 
+we cant create new column for cleaning it like we did in conditional columns part in data cleaning process
+
+for this we have to create Calculated columns after loading the data which will not change the original data but add a new column 
+which is just like a measure ( we calculate it everytime to see it but its not created inside our initial oriinal data)
+
+
+
+-------------------------------------------------------------------
+
+1. City Column --> Customer Table
+
+we have 20,000 rows in this table , 100s of rows have random 5-6 line long strings which are reviews written by users in city section we dont need ..
+most city names are very short w.r.t string length ..
+
+so we have remove long strings setting a [threshold of length] in this table by filtering current city table and [threshold of words]
+
+------------Code ---------
+
+FilterCity = 
+VAR CurrentValue = Customers[City]
+
+VAR TotalCharacters = LEN(CurrentValue)
+VAR TotalWords  = LEN(CurrentValue) - LEN(SUBSTITUTE(CurrentValue, " ", "")) + 1  //substituting spaces with null 
+//number of spaces between words + 1 = total words
+
+VAR IsTooLong = TotalCharacters > 30
+VAR TooManyWords = TotalWords > 4
+VAR IsReviewText = CONTAINSSTRING(CurrentValue, "RATED")
+
+RETURN
+IF(
+    // If ANY of these are TRUE...
+    TooManyWords || IsTooLong || IsReviewText, 
+    
+    // ...then give me a blank
+    BLANK(), 
+    
+    // ...otherwise, give me the original city name
+    CurrentValue
+)
+------------------------------
+
+after this only some rows are faulty with city name which is fine or now or what we can do is for perfect table and perfect data is 
+write down the city names generate a code 
+"if lowered(city) name is is the list of valid lowered(city names)" then fine 
+"else null"
+
+---------------------------------------------------------------------
+
+
