@@ -71,6 +71,30 @@ IF(
     )
 )
 
-------------------------------
+---------------------------------------------------------------------
 
-3. 
+
+3. Rate Column --> Restaurant Table
+
+------------Code--------------
+
+Rating Bucket = 
+
+VAR CurrentRating = Restaurants[rate]
+
+RETURN
+IF( CurrentRating >= 4.5, "Excellent",
+    
+    IF( CurrentRating >= 4.0, "Good",
+        
+        IF( CurrentRating >= 3.0, "Average", 
+            
+            "Low" 
+        )
+    )
+)
+
+
+---------------------------------------------------------------------
+
+
