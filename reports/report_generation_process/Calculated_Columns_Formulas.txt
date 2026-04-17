@@ -94,7 +94,25 @@ IF( CurrentRating >= 4.5, "Excellent",
     )
 )
 
+     OR
+
+Rating Bucket = 
+SWITCH(
+    TRUE(),
+    Restaurants[rate] == BLANK() , BLANK(),
+    Restaurants[rate] >= 4.5, "Excellent",
+    Restaurants[rate] >= 4.0, "Good",
+    Restaurants[rate] >= 3.0, "Average",
+    "Low"
+)
+
 
 ---------------------------------------------------------------------
+
+3. DeliveryTimeMinutes Column --> Orders Table
+
+Delivery Status =
+IF(Orders[DeliveryTimeMins] > 45, "Late", "On Time")
+
 
 
