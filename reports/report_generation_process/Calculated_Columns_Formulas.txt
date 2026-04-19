@@ -109,10 +109,34 @@ SWITCH(
 
 ---------------------------------------------------------------------
 
-3. DeliveryTimeMinutes Column --> Orders Table
+4. DeliveryTimeMinutes Column --> Orders Table
 
 Delivery Status =
 IF(Orders[DeliveryTimeMins] > 45, "Late", "On Time")
 
 
 
+---------------------------------------------------------------------
+
+5. Restaurant Name column --> Restaurants Table
+
+------------Code--------------
+
+Restaurant Name Filtered = 
+VAR RawName = TRIM(Restaurants[name])
+VAR IsRated = CONTAINSSTRING(RawName, "rated")
+VAR CharCount = LEN(RawName)
+// Logic to count words: Length minus length without spaces + 1
+VAR WordCount = CharCount - LEN(SUBSTITUTE(RawName, " ", "")) + 1
+
+RETURN
+SWITCH( TRUE(),
+    IsRated, BLANK(),          // Rule 1: Contains "Rated"
+    WordCount > 3, BLANK(),     // Rule 2: More than 3 words
+    CharCount > 30, BLANK(),    // Rule 3: More than 30 characters
+    RawName                     // Otherwise, keep it
+)
+
+------------------------------
+
+-------------------------------------------------------------------
