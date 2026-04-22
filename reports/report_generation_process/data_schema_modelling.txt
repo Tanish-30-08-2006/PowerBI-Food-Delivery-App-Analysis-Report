@@ -1,3 +1,7 @@
+TYPES OF SCHEMAS ...
+STAR SCHEMA       --> One center fact table which is referenced by all dimension tables [ only one center ]
+SNOW FLAKE SCHEMA --> One center fact table which is connected to some tables and that tables are also centre for some connected tables to it 
+                      Like a hierarchy ...
 
 
 #---------------------------------MANAGING RELATIONSHIPS---------------------------------------#
