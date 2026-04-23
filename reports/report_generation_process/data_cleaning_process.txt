@@ -121,7 +121,9 @@ IF(
 --------------------------
 
 
+
 #-------------REMOVED ALL UNCLEANED ROWS WHICH WERE CREATING PROBLEMS-------------#
+
 
 12----------------------------------
 Column --> online_booking
@@ -129,12 +131,15 @@ Column --> online_booking
 if yes then yes , no then no else blank
 then unselected blank from the column right click or filter
 then "Merged Queiries" from home section with order table and restaurant table
-REMEMBER to use inner join ( only matching rows ) here so rest ones gets discarded
+REMEMBER to use inner join ( only matching rows ) here so rest ones gets discarded ---->  to maintain referential integrity
+
+after Merge queries by inner join only matching rows will come to maintain referential integrity..
 
 
 
 
-
+13--------------------------
+Cuisines
 
 
 
