@@ -141,6 +141,7 @@ after Merge queries by inner join only matching rows will come to maintain refer
 13--------------------------
 Cuisines column -> restaurant table
 
+------------
 Step 1:
 Open Transform Data.
 
@@ -153,7 +154,7 @@ Rename this new table to Cuisine_Analysis_Table.
 Why: This keeps your "Real" revenue safe in the main table and gives us a "Playground" for Cuisines.
 
 
-
+----------------
 Step 2: The "Split into Rows" Magic
 Goal: Turn "Italian, Chinese" into two separate entries.
 
@@ -174,7 +175,7 @@ Click OK.
 The "Trim" Move: Right-click the Cuisines column -> Transform -> Trim. (This removes the annoying space before " Chinese").
 
 
-
+------------------------
 Step 3: Dealing with the "Double Counting" (The Math Part)
 The Problem: If Restaurant A made $100 and serves Italian & Chinese, your new table now shows:
 
@@ -183,6 +184,7 @@ Row 1: Restaurant A | Italian | $100
 Row 2: Restaurant A | Chinese | $100
 
 Total in this table = $200 (This is WRONG! The real revenue is $100).
+
 
 Step 4: Connecting the Tables (The Relationship)
 Goal: Make sure your slicers work.
