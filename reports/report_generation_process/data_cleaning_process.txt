@@ -139,15 +139,62 @@ after Merge queries by inner join only matching rows will come to maintain refer
 
 
 13--------------------------
-Cuisines
+Cuisines column -> restaurant table
+
+Step 1:
+Open Transform Data.
+
+In the left list of tables, find your main restaurant table.
+
+Right-click it and select Reference (this is better than "Duplicate" because if you clean the main table, this one updates automatically).
+
+Rename this new table to Cuisine_Analysis_Table.
+
+Why: This keeps your "Real" revenue safe in the main table and gives us a "Playground" for Cuisines.
+
+
+Step 2: The "Split into Rows" Magic
+Goal: Turn "Italian, Chinese" into two separate entries.
+
+Click the Cuisines column.
+
+Go to the Transform tab at the top.
+
+Click Split Column -> By Delimiter.
+
+Select Comma.
+
+Stop! Click Advanced Options.
+
+Select Rows (NOT Columns).
+
+Click OK.
+
+The "Trim" Move: Right-click the Cuisines column -> Transform -> Trim. (This removes the annoying space before " Chinese").
 
 
 
+Step 3: Dealing with the "Double Counting" (The Math Part)
+The Problem: If Restaurant A made $100 and serves Italian & Chinese, your new table now shows:
 
+Row 1: Restaurant A | Italian | $100
 
+Row 2: Restaurant A | Chinese | $100
 
+Total in this table = $200 (This is WRONG! The real revenue is $100).
 
+Step 4: Connecting the Tables (The Relationship)
+Goal: Make sure your slicers work.
 
+Go to the Model View (the 3 boxes icon on the far left).
+
+You will see your Main Table and your Cuisine_Analysis_Table.
+
+Link them using Restaurant ID.
+
+Set the relationship to 1 to Many (1 on Main, * on Cuisine).
+
+Set the Cross Filter Direction to Both.
 
 
 #---------------------------------MANAGING RELATIONSHIPS---------------------------------------#
