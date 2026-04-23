@@ -186,6 +186,7 @@ Row 2: Restaurant A | Chinese | $100
 Total in this table = $200 (This is WRONG! The real revenue is $100).
 
 
+-------------------
 Step 4: Connecting the Tables (The Relationship)
 Goal: Make sure your slicers work.
 
