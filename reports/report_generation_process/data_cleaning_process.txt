@@ -87,6 +87,62 @@ Explanation : Filters vs Conditional columns
 Always use conditional column as it keeps the rows intact , filters removes whole rows which doesnt satisfy the filter
 condition rather than replacing it with null
 
+11--------------------------------------
+Column ---> rest_service_type
+
+Had random strings and service was not understandable as single and multiple values ..
+
+Unique values we need --> Deserts
+                          Dine-Out
+                          Delivery
+                          Cafes
+                          Buffet
+                          Drinks & nightlife
+                          Pubs and bars
+Got by scrolling all 50,000 rows ...
+
+---------Code-----------
+
+Service_Type_Cleaned = 
+IF(
+    Restaurants[ServiceType] IN {
+        "Deserts", 
+        "Dine-out", 
+        "Delivery", 
+        "Cafes", 
+        "Buffet", 
+        "Drinks & nightlife", 
+        "Pubs and bars"
+    },
+    Restaurants[ServiceType],
+    BLANK()
+)
+
+--------------------------
+
+
+#-------------REMOVED ALL UNCLEANED ROWS WHICH WERE CREATING PROBLEMS-------------#
+
+12----------------------------------
+Column --> online_booking
+
+if yes then yes , no then no else blank
+then unselected blank from the column right click or filter
+then "Merged Queiries" from home section with order table and restaurant table
+REMEMBER to use inner join ( only matching rows ) here so rest ones gets discarded
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 #---------------------------------MANAGING RELATIONSHIPS---------------------------------------#
