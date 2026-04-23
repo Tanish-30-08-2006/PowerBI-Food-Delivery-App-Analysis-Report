@@ -153,6 +153,7 @@ Rename this new table to Cuisine_Analysis_Table.
 Why: This keeps your "Real" revenue safe in the main table and gives us a "Playground" for Cuisines.
 
 
+
 Step 2: The "Split into Rows" Magic
 Goal: Turn "Italian, Chinese" into two separate entries.
 
