@@ -634,8 +634,8 @@ This report was built independently as a full end-to-end Power BI project coveri
 | **Tools Used** | Microsoft Power BI Desktop, Power Query, DAX, OBS Studio, DaVinci Resolve |
 | **Project Type** | Business Intelligence Dashboard |
 | **Domain** | Food Delivery / E-Commerce Analytics |
-| **GitHub** | *(Your GitHub Profile Link)* |
-| **LinkedIn** | *(Your LinkedIn Profile Link)* |
-| **Contact** | *(Your Email or preferred contact)* |
+| **GitHub** | *https://github.com/Tanish-30-08-2006* |
+| **LinkedIn** | *https://www.linkedin.com/in/tanish-sanghavi-a44b873b6/* |
+| **Contact** | *tanishsanghavi2@gmail.com* | 
 
 [Back to Table of Contents](#table-of-contents)
