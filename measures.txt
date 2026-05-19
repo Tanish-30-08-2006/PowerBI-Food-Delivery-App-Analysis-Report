@@ -1,0 +1,151 @@
+
+
+--------------------------------------CUSTOMER MEASURES-------------------------------------------------
+
+
+Active Buyers = DISTINCTCOUNT(Orders[CustomerID])
+
+
+
+Avg Orders Per Customer = 
+DIVIDE(
+    COUNT(Orders[OrderID]), 
+    DISTINCTCOUNT(Orders[CustomerID]), 
+    0
+)
+
+
+Avg Revenue Per Customer = 
+DIVIDE(
+    [Total Revenue], 
+    DISTINCTCOUNT(Orders[CustomerID]), 
+    0
+)
+
+
+Customer Category = 
+VAR OrderCount = COUNT(Orders[OrderID])
+RETURN
+SWITCH( TRUE(),
+    OrderCount = 1, "New",
+    OrderCount >= 2 && OrderCount < 5, "Returning",
+    OrderCount >= 5, "Premium",
+    "Inactive"
+)
+
+
+Orders Per Customer = 
+DIVIDE([Total Orders], [Total Customers])
+
+
+Repeat Customer % = 
+VAR RepeatCount = [Repeat Customers]
+VAR TotalActiveCustomers = DISTINCTCOUNT(Orders[CustomerID])
+RETURN
+DIVIDE(RepeatCount, TotalActiveCustomers, 0)
+
+
+Repeat Customers = 
+// COUNTROWS(
+//     FILTER(
+//         VALUES(Orders[CustomerID]),
+//         CALCULATE([Total Customers],Customers[CustomerType]="Returning" &  Customers[CustomerType]= "Premium")
+//     )
+// )
+
+CALCULATE(COUNTROWS(Customers),Customers[CustomerType] IN {"Premium ", "Returning"})
+
+
+Signup ConTotal Orders = COUNT(Orders[OrderID])version % = DIVIDE([Active Buyers], [Total Signups], 0)
+
+
+Total Signups = DISTINCTCOUNT(Orders[CustomerID])
+
+
+
+------------------------------------KPI MEASURES-----------------------------------------------
+
+
+Avg Delivery Time = AVERAGE(Orders[DeliveryTimeMins])
+
+
+Avg Order Value = DIVIDE([Total Revenue], [Total Orders])
+
+
+Total Customers = DISTINCTCOUNT(Orders[CustomerID])
+
+
+Total Orders = COUNT(Orders[OrderID])
+
+
+Total Restaurants = DISTINCTCOUNT(Restaurants[RestaurantID]) 
+
+
+Total Revenue = SUM(Orders[OrderValue])
+
+
+
+-----------------------------------RESTAURANT PERFORMANCE MEASURES-----------------------------------
+
+
+Avg Rating = AVERAGE(Restaurants[rate])
+
+
+Avg Votes = AVERAGE(Restaurants[Votes])
+
+
+Revenue per Restaurant = 
+DIVIDE([Total Revenue], [Total Restaurants])
+
+
+Total Unique Cuisines = DISTINCTCOUNT(Cuisine_Analysis_Table[cuisines])
+
+
+Total Unique Services = DISTINCTCOUNT(Cuisine_Analysis_Table[ServiceType])
+
+
+
+------------------------------------ORDERS STATUS MEASURES---------------------------------------------
+
+
+Cancellation % = 
+DIVIDE([Cancelled Orders], [Total Orders])
+
+
+Cancelled Orders = 
+CALCULATE([Total Orders], Orders[OrderStatus] = "Cancelled")
+
+
+Delayed Orders = 
+CALCULATE([Total Orders], Orders[OrderStatus] = "Delayed")
+
+
+Delivered Orders = 
+CALCULATE([Total Orders], Orders[OrderStatus] = "Delivered")
+
+
+Late Delivery % = 
+DIVIDE([Late Orders], [Total Orders])*100
+
+
+Late Orders = 
+CALCULATE([Total Orders], Orders[Delivery Status] = "Late")
+ 
+
+----------------------------------TIME INTELLIGENCE MEASURES-------------------------------------
+
+
+Revenue Growth % = 
+DIVIDE([Total Revenue] - [Revenue Previous Month], [Revenue Previous Month])
+
+
+Revenue Previous Month = 
+CALCULATE([Total Revenue], DATEADD(DateTable[Date], -1, MONTH))
+
+
+Revenue YTD = TOTALYTD([Total Revenue], DateTable[Date])
+
+
+Orders YTD = TOTALYTD([Total Orders], DateTable[Date])
+
+
