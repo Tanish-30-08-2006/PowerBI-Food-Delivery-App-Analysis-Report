@@ -1,0 +1,260 @@
+
+#-------------------------------TABLES EXPLANATION-------------------------------------#
+
+
+
+FACT TABLE --> All foreign keys referencing to all dimension tables in schema from just one tables
+DIMENSION TABLE ---> All the extra information we need about customers Restaurants date etc.....
+
+
+
+
+#---------------------------------DATA CLEANING---------------------------------------#
+
+1-------------------------------
+Changed datatype of date in 3 tables
+
+
+Restaurants table
+
+2--------------------------------
+online_order column had yes/no values with some random values on some rows ..
+so created a conditional column with Yes --> Yes , No--> No , else null so random values go to null
+
+967 values out of 1000 were yes/no 
+33 were random strings replaced by null with conditional column..
+
+
+3--------------------------------
+book_table --> column
+967 were yes/no again and 33 were random strings
+conditional column created with yes/no else null ...
+
+
+4-----------------------------------
+rate ---> column
+80 rows out of 1000 had unwanted strings ..
+920 were 4.0/5, 3.2/5 etc ..
+
+So created extracted with text before delimeter "/" and changed datatype to decimal number
+80 rows showed errors as they were strings and now we had to "Filter" rows
+Right click on column name to find replace erros , then replaced errors as null   OR
+Go to replace values , there replace errors as null...
+
+
+5-----------------------------------
+votes ---> column
+many rows had random strings..
+changed datatype to decimal 
+strings rows showed error
+replaced error with null
+
+
+6---------------------------------
+renamed some columns 
+listed_in(city) --> Citygroup
+listed_in_type(bulleted) --> Service_Type
+Costfortwopeople --> CostForTwo
+
+
+7-------------------------------------
+column --> CostForTwo
+33 rows had erros in this random strings rather than integer
+changed dataype to decimal , then replaced errors from replace values (strings) to null
+
+
+8-------------------------------------
+cuisine --> Column 
+Primary Cuisine  --> New Column
+Extracted Primary Cuisine from list of Cuisines by text before delimeter
+North Indian , Chinese , Mughlai ---> North Indian 
+
+9-------------------------------------
+column --> PrimaryCuisine
+Out of 1000 , 40-50 random strings which are not needed
+
+most of them had rated/Rated/RATED in their rows so created a conditional column and 
+replaced strings whcih contains  rated/Rated/RATED with null
+
+but still some were there which had to be removed manually but filters is never a good choice 
+while cleaning as filters removes whole rows which doesnt satisfy the filter rather than replacing with null
+as this column is not a primary key we just need to replace it with null , like user didnt submit their primary Cuisine
+
+
+10-------------------------------------
+Explanation : Filters vs Conditional columns
+
+Always use conditional column as it keeps the rows intact , filters removes whole rows which doesnt satisfy the filter
+condition rather than replacing it with null
+
+11--------------------------------------
+Column ---> rest_service_type
+
+Had random strings and service was not understandable as single and multiple values ..
+
+Unique values we need --> Deserts
+                          Dine-Out
+                          Delivery
+                          Cafes
+                          Buffet
+                          Drinks & nightlife
+                          Pubs and bars
+Got by scrolling all 50,000 rows ...
+
+---------Code-----------
+
+Service_Type_Cleaned = 
+IF(
+    Restaurants[ServiceType] IN {
+        "Deserts", 
+        "Dine-out", 
+        "Delivery", 
+        "Cafes", 
+        "Buffet", 
+        "Drinks & nightlife", 
+        "Pubs and bars"
+    },
+    Restaurants[ServiceType],
+    BLANK()
+)
+
+--------------------------
+
+
+
+#-------------REMOVED ALL UNCLEANED ROWS WHICH WERE CREATING PROBLEMS-------------#
+
+
+12----------------------------------
+Column --> online_booking
+
+if yes then yes , no then no else blank
+then unselected blank from the column right click or filter
+then "Merged Queiries" from home section with order table and restaurant table
+REMEMBER to use inner join ( only matching rows ) here so rest ones gets discarded ---->  to maintain referential integrity
+
+after Merge queries by inner join only matching rows will come to maintain referential integrity..
+
+
+
+
+13--------------------------
+Cuisines column -> restaurant table
+
+------------
+Step 1:
+Open Transform Data.
+
+In the left list of tables, find your main restaurant table.
+
+Right-click it and select Reference (this is better than "Duplicate" because if you clean the main table, this one updates automatically).
+
+Rename this new table to Cuisine_Analysis_Table.
+
+Why: This keeps your "Real" revenue safe in the main table and gives us a "Playground" for Cuisines.
+
+
+----------------
+Step 2: The "Split into Rows" Magic
+Goal: Turn "Italian, Chinese" into two separate entries.
+
+Click the Cuisines column.
+
+Go to the Transform tab at the top.
+
+Click Split Column -> By Delimiter.
+
+Select Comma.
+
+Stop! Click Advanced Options.
+
+Select Rows (NOT Columns).
+
+Click OK.
+
+The "Trim" Move: Right-click the Cuisines column -> Transform -> Trim. (This removes the annoying space before " Chinese").
+
+
+------------------------
+Step 3: Dealing with the "Double Counting" (The Math Part)
+The Problem: If Restaurant A made $100 and serves Italian & Chinese, your new table now shows:
+
+Row 1: Restaurant A | Italian | $100
+
+Row 2: Restaurant A | Chinese | $100
+
+Total in this table = $200 (This is WRONG! The real revenue is $100).
+
+
+-------------------
+Step 4: Connecting the Tables (The Relationship)
+Goal: Make sure your slicers work.
+
+Go to the Model View (the 3 boxes icon on the far left).
+
+You will see your Main Table and your Cuisine_Analysis_Table.
+
+Link them using Restaurant ID.
+
+Set the relationship to 1 to Many (1 on Main, * on Cuisine).
+
+Set the Cross Filter Direction to Both.
+
+
+#---------------------------------MANAGING RELATIONSHIPS---------------------------------------#
+
+
+1. ORDERS AND RESTAURANT TABLE ( on Restaurant_ID )
+
+
+Cardinality------------------
+For one order      --> one Restaurant_ID [ONE]
+for one Restaurant --> multiple Orders   [MANY]
+
+
+Direction---------------------
+direction --> from restaurant to orders
+
+Query to think while thinking arrow direction logic...
+"View all orders for Restaurant ID 101"
+
+Now in restaurant id first ID=101 will be selected and now to lookup orders for this reestaureant id 
+we need arrow i.e data tranfer from current(restaurant table) to order table to access all orders for ID=101
+So direction --> from restaurant to orders ( as a restaurant has multiple orders )
+
+If arrow direction is reversed , then first restaurant id =101 will be selected but the path from restaurant
+to order table is blocked so we cant filter orders just for id=101 so the answer will be sum of all orders
+from all restaurant id ( not only 101 )
+
+
+
+2. ORDERS AND CUSTOMER TABLE ( on customer_id)
+
+
+Cardinality------------------
+For one order      --> one Customer_id   [ONE]
+for one Customer   --> multiple Orders   [MANY]
+
+
+Direction---------------------
+direction --> from Customers to Orders
+
+Query to think while thinking arrow direction logic...
+"View all orders for Customer ID 102"
+
+
+
+3. ORDERS AND DATE TABLE ( on OrderDate = Date)
+
+
+Cardinality------------------
+For one order      --> one date   [ONE]
+for one Date       --> multiple Orders   [MANY]
+
+
+Direction---------------------
+direction --> from Date to Orders
+
+Query to think while thinking arrow direction logic...
+"View all orders for Date = 17-04-2026"
+
