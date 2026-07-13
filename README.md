@@ -29,11 +29,11 @@ This section shows all five pages of the report in action. Each recording below 
 
 | Page | Recording |
 |------|-----------|
-| Page 1 — Executive Overview | ![Executive Overview GIF](screenshots_&_screenrecordigns/screen_recordings/Executive-Overview-Page-1-GIF.gif) |
-| Page 2 — Customer Analytics | ![Customer Analytics GIF](screenshots_&_screenrecordigns/screen_recordings/Customer-Analytics-Page-2-GIF.gif) |
-| Page 3 — Restaurant Performance | ![Restaurant Performance GIF](screenshots_&_screenrecordigns/screen_recordings/Restaurant-Performance-Page-3-GIF.gif) |
-| Page 4 — Cuisines and Services Analysis | ![Cuisines GIF](screenshots_&_screenrecordigns/screen_recordings/Cuisines-And-Services-Analysis-Page-4-GIF.gif) |
-| Page 5 — Orders and Delivery Analysis | ![Orders GIF](screenshots_&_screenrecordigns/screen_recordings/Orders-And-Delivery-Analysis-Page-5-GIF.gif) |
+| Page 1 — Executive Overview | ![Executive Overview GIF](screenshots_&_screenrecordings/screen_recordings/Executive-Overview-Page-1-GIF.gif) |
+| Page 2 — Customer Analytics | ![Customer Analytics GIF](screenshots_&_screenrecordings/screen_recordings/Customer-Analytics-Page-2-GIF.gif) |
+| Page 3 — Restaurant Performance | ![Restaurant Performance GIF](screenshots_&_screenrecordings/screen_recordings/Restaurant-Performance-Page-3-GIF.gif) |
+| Page 4 — Cuisines and Services Analysis | ![Cuisines GIF](screenshots_&_screenrecordings/screen_recordings/Cuisines-And-Services-Analysis-Page-4-GIF.gif) |
+| Page 5 — Orders and Delivery Analysis | ![Orders GIF](screenshots_&_screenrecordings/screen_recordings/Orders-And-Delivery-Analysis-Page-5-GIF.gif) |
 
 ---
 
@@ -43,19 +43,19 @@ This section shows all five pages of the report in action. Each recording below 
 <summary>Click to view screenshots of all 5 pages</summary>
 
 **Page 1 — Executive Overview**
-![Executive Overview](screenshots_&_screenrecordigns/images/Executive_Overview_Page.png)
+![Executive Overview](screenshots_&_screenrecordings/images/Executive_Overview_Page.png)
 
 **Page 2 — Customer Analytics**
-![Customer Analytics](screenshots_&_screenrecordigns/images/Customer_Analytics_Page.png)
+![Customer Analytics](screenshots_&_screenrecordings/images/Customer_Analytics_Page.png)
 
 **Page 3 — Restaurant Performance**
-![Restaurant Performance](screenshots_&_screenrecordigns/images/Restaurant_Performance_Page.png)
+![Restaurant Performance](screenshots_&_screenrecordings/images/Restaurant_Performance_Page.png)
 
 **Page 4 — Cuisines and Services Analysis**
-![Cuisines and Services](screenshots_&_screenrecordigns/images/Cuisine_And_Service_Analysis.png)
+![Cuisines and Services](screenshots_&_screenrecordings/images/Cuisine_And_Service_Analysis.png)
 
 **Page 5 — Orders and Delivery Analysis**
-![Orders and Delivery](screenshots_&_screenrecordigns/images/Orders_&_Delivery_Analysis_Page.png)
+![Orders and Delivery](screenshots_&_screenrecordings/images/Orders_&_Delivery_Analysis_Page.png)
 
 </details>
 
@@ -388,7 +388,7 @@ Click on any page name below to expand its full description with all visuals and
 <details>
 <summary><strong>Page 1 — Executive Overview</strong></summary>
 
-![Executive Overview](screenshots_&_screenrecordigns/images/Executive_Overview_Page.png)
+![Executive Overview](screenshots_&_screenrecordings/images/Executive_Overview_Page.png)
 
 This page is the first thing anyone opens. It gives a full top-level picture of how the business is doing — revenue, orders, customers, and which cities and restaurants are leading.
 
@@ -414,7 +414,7 @@ This page is the first thing anyone opens. It gives a full top-level picture of 
 <details>
 <summary><strong>Page 2 — Customer Analytics</strong></summary>
 
-![Customer Analytics](screenshots_&_screenrecordigns/images/Customer_Analytics_Page.png)
+![Customer Analytics](screenshots_&_screenrecordings/images/Customer_Analytics_Page.png)
 
 This page focuses entirely on who the customers are — how they are categorized, how much they spend, how often they return, and where they are located.
 
@@ -441,7 +441,7 @@ This page focuses entirely on who the customers are — how they are categorized
 <details>
 <summary><strong>Page 3 — Restaurant Performance</strong></summary>
 
-![Restaurant Performance](screenshots_&_screenrecordigns/images/Restaurant_Performance_Page.png)
+![Restaurant Performance](screenshots_&_screenrecordings/images/Restaurant_Performance_Page.png)
 
 This page is built for the team that works directly with restaurants. It helps identify top performers, quality issues, and delivery problems — and allows searching for any specific restaurant.
 
@@ -474,7 +474,7 @@ This page is built for the team that works directly with restaurants. It helps i
 <details>
 <summary><strong>Page 4 — Cuisines and Services Analysis</strong></summary>
 
-![Cuisines and Services](screenshots_&_screenrecordigns/images/Cuisine_And_Service_Analysis.png)
+![Cuisines and Services](screenshots_&_screenrecordings/images/Cuisine_And_Service_Analysis.png)
 
 This page shows what customers are ordering in terms of food type and how they are using the platform — delivery, dine-out, cafes, and other service types.
 
@@ -508,7 +508,7 @@ This page shows what customers are ordering in terms of food type and how they a
 <details>
 <summary><strong>Page 5 — Orders and Delivery Analysis</strong></summary>
 
-![Orders and Delivery](screenshots_&_screenrecordigns/images/Orders_&_Delivery_Analysis_Page.png)
+![Orders and Delivery](screenshots_&_screenrecordings/images/Orders_&_Delivery_Analysis_Page.png)
 
 This is the operational page. It is built for the logistics and delivery team to track how orders are being fulfilled, when peak periods occur, and where the biggest delivery problems are.
 
