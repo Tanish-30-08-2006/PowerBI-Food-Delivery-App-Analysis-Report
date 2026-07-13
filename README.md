@@ -41,8 +41,7 @@ This section shows all five pages of the report in action. Each recording below 
 
 ### Screenshots
 
-<details>
-<summary>Click to view screenshots of all 5 pages</summary>
+*(View these static screenshots while the screen recordings load above)*
 
 **Page 1 — Executive Overview**
 ![Executive Overview](screenshots_&_screenrecordings/images/Executive_Overview_Page.png)
@@ -58,8 +57,6 @@ This section shows all five pages of the report in action. Each recording below 
 
 **Page 5 — Orders and Delivery Analysis**
 ![Orders and Delivery](screenshots_&_screenrecordings/images/Orders_&_Delivery_Analysis_Page.png)
-
-</details>
 
 [Back to Table of Contents](#table-of-contents)
 
