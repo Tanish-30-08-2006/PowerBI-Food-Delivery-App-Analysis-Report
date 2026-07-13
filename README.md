@@ -25,6 +25,8 @@
 
 This section shows all five pages of the report in action. Each recording below covers one full page of the Power BI report.
 
+> **Note:** The screen recordings below are high-quality GIFs. Please allow a few moments for them to load fully for the best viewing experience.
+
 ### Screen Recordings
 
 | Page | Recording |
